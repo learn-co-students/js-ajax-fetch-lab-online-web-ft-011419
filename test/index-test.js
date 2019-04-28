@@ -13,7 +13,7 @@ describe('index', () => {
         return done(err);
       }
 
-      Object.keys(window).forEach(key => {
+      ['getToken', 'document', 'window', 'forkRepo', 'showResults', 'createIssue', 'getIssues'].forEach(key => {
         global[key] = window[key];
       });
 
