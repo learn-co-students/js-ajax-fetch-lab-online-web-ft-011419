@@ -27,9 +27,35 @@ document.getElementById('results').innerHTML = `<a href ="${json.html_url}">${js
 }
 
 function createIssue() {
-  //use this function to create an issue based on the values input in index.html
-}
+  const postData = {
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value
+  };
+    fetch('https://github.com/repos/gbs4ever/js-ajax-fetch-lab/issues',{
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        //"Content-Type": "application/json",
+        Authorization: `token ${getToken()}`
+        }
+
+    })
+  .then(res => res.json())
+  .then(res => res.console.log(res));
+  }
+//   //use this function to create an issue based on the values input in index.html
+
 
 function getIssues() {
-  //once an issue is submitted, fetch all open issues to see the issues you are creating
+  fetch('https://github.com/repos/gbs4ever/js-ajax-fetch-lab/issues',{
+
+headers: {
+      //"Content-Type": "application/json",
+      Authorization: `token ${getToken()}`
+      }
+
+  })
+  .then(res => res.json())
+  .then(res => res.console.log(res))
+  //document.getElementById('issues').innerHTML =
 }
